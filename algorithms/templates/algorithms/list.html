@@ -1,0 +1,8 @@
+<h1>Algorithms</h1>
+<ul>
+{% for algorithm in algorithms %}
+    <li><a href='/algorithms/{{algorithm.id}}'>{{ algorithm.name }}</a> - {{ algorithm.description }}</li>
+{% empty %}
+    <li>No algorithms yet.</li>
+{% endfor %}
+</ul>
