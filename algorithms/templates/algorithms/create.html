@@ -1,0 +1,7 @@
+<h1>New algorithm</h1>
+
+<form action="/algorithms/new/" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>

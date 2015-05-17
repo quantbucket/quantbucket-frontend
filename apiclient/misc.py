@@ -15,10 +15,9 @@ class Client():
 		response = requests.get(self.endpoint+resource)
 		self.response = response.json()
 
-	def post(self,resource,payload):
-		headers = {'Content-type': 'application/json'}
-		response = requests.post(self.endpoint+self.resource, data=json.dumps(payload), headers=headers)
-		self.response = response.json()
+	def post(self,resource,payload,files=None):
+		response = requests.post(self.endpoint+resource, data=payload, files=files)
+		self.response = json.loads(response.text)
 
 	def add_method(self,name,path):
 		self.methods[name] = path
@@ -39,7 +38,7 @@ class Resource(Client):
 
 	def register_base_methods(self):
 		self.add_method('list',self.resource)
-		self.add_method('detail',self.resource+'/{id}')
+		self.add_method('detail',self.resource+'{id}/')
 		self.add_method('create',self.resource)
 
 	def detail(self,id):
@@ -50,6 +49,6 @@ class Resource(Client):
 		self.get(self.get_method('list'))
 		return self.response
 
-	def create(self,payload):
-		self.post(self.get_method('create'),payload)
+	def create(self,payload,files=None):
+		self.post(self.get_method('create'),payload,files)
 		return self.response
