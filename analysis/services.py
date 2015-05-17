@@ -3,7 +3,7 @@ from apiclient.misc import Resource
 class Analysis(Resource):
 
 	def set_resource(self):
-		self.resource = '/analysis'
+		self.resource = '/analysis/'
 
 	def register_methods(self):
 		self.add_method('do',self.resource)
