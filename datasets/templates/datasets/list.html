@@ -1,0 +1,9 @@
+<h1>Datasets</h1>
+<ul>
+{% for dataset in datasets %}
+    <li><a href='/datasets/{{dataset.id}}'>{{ dataset.name }}</a></li>
+{% empty %}
+    <li>No datasets yet.</li>
+{% endfor %}
+</ul>
+<p>Upload more data <a href='/datasets/new'>Add a dataset</a>.</p>
